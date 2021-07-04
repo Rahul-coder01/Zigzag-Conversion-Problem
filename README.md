@@ -38,33 +38,34 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 1 <= numRows <= 1000
 
 
-Code Solution : (In C++)
+Code Solution : (In Python)
 
-class Solution {
-public:
-    string convert(string s, int numRows) {
+
+class Solution(object):
+    def convert(self, s, numRows):
+        if numRows <= 1:
+            return s
         
-string Solution::convert(string a, int b) {
-   if(b == 1)return a;
-   string arr[b];
-   int row = 0;
-   bool down = true;
-   for(int i = 0; i < a.size(); i++){
-      arr[row].push_back(a[i]);
-      if(row == b - 1) down = false;
-      else if(row == 0)down = true;
-      if(down) row++;
-      else row--;
-   }
-   string ans = "";
-   for(int i = 0; i < b; i++){
-      ans += arr[i];
-   }
-   return ans;
-}
-main(){
-   Solution ob;
-   cout << ob.convert("PAYPALISHIRING", 3);
+        res = ""
+        p = numRows * 2 - 2
         
-    }
-};
+        temp = p
+        for i in range(0,numRows):
+            index = i
+            flag = 0
+            while index < len(s):
+                res = res + s[index]
+                if i == 0 or i == numRows-1:
+                    index = index + p
+                else:
+                    if flag == 0:
+                        index = index + temp
+                        flag = 1
+                    else:
+                        index = index + p-temp
+                        flag = 0
+                        
+            temp = temp - 2
+            
+        return res
+
